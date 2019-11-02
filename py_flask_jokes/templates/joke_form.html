@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{%block content%}
+    <div class="container">
+        <h1 class="row justify-content-center">CS Jokes</h1>
+        <form class ="row justify-content-center" action="{{ url_for('joke_form') }}" method="POST">
+            <div class="col">
+                <label for="c">Category</label>
+                <select name="cat" id="c">
+                    <option value="neutral">Neutral</option>
+                    <option value="chuck">Chuck</option>
+                    <option value="all">All</option>
+                </select>
+            </div>
+            <div class="col">
+                <label for="la">Language</label>
+                <select name="lang" id="la">
+                    <option value="en">English</option>
+                    <option value="de">German</option>
+                    <option value="es">Spanish</option>
+                </select>
+            </div>
+            <div class="col">
+                <label for="a">Amount</label>
+                <input type="text" name="amount" id="a"> 
+            </div>
+            <div class="col">
+                <button type='submit'>Assemble Joke</button>
+            </div>
+        </form>
+        <div class="row justify-content-center">
+            <ul>
+                {%for joke in jokes%}
+                    <li>{{joke}}</li>
+                {%endfor%}
+            </ul>
+        </div>
+    </div>    
+{%endblock%}
